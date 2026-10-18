@@ -75,6 +75,35 @@ dibutuhkan (`sampul()`, `halaman_pengesahan()`, `abstrak()`, `judul_bab()`,
 `subjudul()`, `isi()`, `judul_tabel()`, `gambar()`, `keterangan_gambar()`,
 `persamaan()`, `entri_pustaka()`).
 
+## Cara memperbarui skill
+
+Skill ini dirancang untuk terus diperbarui. Ringkasnya:
+
+1. Tarik dulu perubahan terbaru (kalau dipakai di lebih dari satu device):
+   ```bash
+   cd "$LOCALAPPDATA/hermes/skills/productivity/laporan-usk" && git pull
+   ```
+2. Ubah berkas yang sesuai (aturan inti → `SKILL.md`; rincian aturan → `references/`;
+   kerangka/generator → `templates/`; cara pakai → `README.md`). Tabel lengkapnya ada
+   di `SKILL.md` bagian **"Cara memperbarui skill"**.
+3. Catat **tanggal** untuk setiap ketentuan/preferensi baru, dan pindahkan item yang
+   sudah dijawab dari daftar `[PERLU KONFIRMASI]` ke daftar "sudah dikonfirmasi".
+4. Cek tidak ada data pribadi, token, atau isi laporan asli yang ikut tertulis:
+   ```bash
+   grep -rn -E "<kata-kata terlarang>" . --exclude-dir=.git
+   ```
+5. Commit & push:
+   ```bash
+   git add -A && git commit -m "<ringkasan perubahan>" && git push origin main
+   ```
+6. Verifikasi sudah sinkron:
+   ```bash
+   git log --oneline -1
+   gh api repos/Jesenjuansa/skill-laporan-usk/commits/main --jq '.sha[0:10]'
+   ```
+7. Di device lain, cukup `git pull` untuk mendapat pembaruannya; setelah itu muat
+   ulang skill supaya perubahannya terbaca.
+
 ## Aturan penting
 
 - **Jangan mengarang.** Hal yang belum pasti atau belum pernah diminta user ditandai
