@@ -137,8 +137,12 @@ menyajikan informasi lebih efektif dan mengurangi kalimat panjang.
 
 ### Penomoran (berlaku sama untuk tabel & gambar)
 
-- Angka **Arab**, dimulai dengan **nomor bab** + **titik**, lalu **nomor urut** +
-  **titik** → contoh: `Tabel 2.1.`, `Gambar 3.2.`
+- Angka **Arab**, dimulai dengan **nomor bab** + **titik**, lalu **nomor urut** + **titik** → contoh: `Tabel 2.1.`, `Gambar 3.2.`
+  `[PANDUAN]` Catatan PUEBI di bagian 3 file ini: angka penomoran deret ilustrasi
+  ditulis **tanpa titik di belakang** (`Gambar 2.1`), dan subjudul pun `[USER]` tanpa
+  titik. Kalau menemukan captions sumber (LKP/skripsi lain) berbentuk `Gambar 2.1`
+  tanpa titik, itu konsisten dengan PUEBI — jangan "membetulkan" jadi bertitik; ikuti
+  bentuk yang dipakai naskah user sendiri, dan tanyakan bila belum ada contohnya.
 - Tabel/gambar pertama di Bab II = `Tabel 2.1.` / `Gambar 2.1.`
 - Nomor di Daftar Tabel/Daftar Gambar harus sama dengan yang di teks.
 
@@ -179,6 +183,11 @@ menyajikan informasi lebih efektif dan mengurangi kalimat panjang.
   **tanda kurung**, boleh ditambah **"dimodifikasi dari"**.
 - Gambar boleh ditempatkan di halaman sendiri, terpisah dari teks.
 - Beberapa data tidak perlu di Bagian Isi, cukup di **Lampiran**.
+- **Keterangan tidak boleh terpisah halamannya dari gambar.** Set `keep_with_next`
+  pada paragraf gambar dan `keep_together` agar gambar tidak dipecah antar halaman.
+- **Satu tangkapan layar antarmuka = satu nomor Gambar**, bukan digabung beberapa
+  halaman ke satu nomor dan bukan ditempel jadi satu gambar gabungan. Urutan bloknya:
+  paragraf penjelas → gambar → keterangan di bawahnya.
 
 ### Persamaan
 
@@ -202,9 +211,17 @@ N  : gaya normal (N)
 
 - Tabel: `doc.add_table(rows, cols)`, set gaya garis, judul tabel sebagai paragraf
   terpisah **sebelum** tabel, centang; bila lewat satu baris → rata kiri.
-- Gambar: `run.add_picture(path, width=Cm(...))` dalam paragraf rata tengah. Untuk
-  laporan yang akan dipindah-pindah: lebar maksimal **16 cm** (area teks laporan
-  dengan margin 3/3 cm ≈ 15 cm) agar tidak melewati margin.
+- Gambar: `run.add_picture(path, width=Cm(...))` dalam paragraf rata tengah. Lebar
+  maksimal **14 cm** — area teks dengan margin kiri 3,5 cm dan kanan 3,0 cm hanya
+  **14,5 cm**, jadi 15 cm sudah melewati margin. Jangan memperbesar melebihi ukuran
+  asli tangkapan layar (hasilnya blur). Contoh lengkap: `templates/gen_bab3_laporan.py`.
+  Hitung lebar dari section, jangan dihafal: `Emu(sec.page_width - sec.left_margin -
+  sec.right_margin).cm`, lalu kurangi ~0,8 mm agar pembulatan Word tidak memindahkan
+  gambar ke halaman berikutnya. Dokumen berdiri sendiri dengan margin 2,5 cm boleh
+  memakai bagan selebar **16 cm**; naskah USK tetap 14 cm.
+- Kotak penanda untuk gambar yang belum ada: tabel 1×1 bergaris putus-putus, tetapi
+  lebarnya harus dipaksa di level tabel (`w:tblW`, `w:tblLayout type="fixed"`,
+  `w:gridCol`), bukan hanya `cell.width`, kalau tidak kotaknya meluber ke margin.
 - Nomor `Tabel 2.1.`/`Gambar 2.1.` ditulis manual (bukan caption otomatis Word)
   supaya konsisten dengan format panduan dan mudah diatur.
 

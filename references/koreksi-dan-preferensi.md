@@ -22,10 +22,10 @@ sebelum mengerjakan tugas dokumentasi apa pun** untuk dia.
    "jangan di bedain, 1 file aja".
 4. **Sitasi hanya dari PDF referensi jurnal miliknya** dan harus bisa ditelusuri
    ke berkasnya. Jangan mengarang sumber.
-5. **Gambar/diagram harus tetap terbaca setelah ditempel di Word** (area teks
-   ± 16 cm) dan harus disertai **berkas sumber** (mis. `.drawio`). Diagram dibuat
-   manual via matplotlib + ekspor drawio karena di komputer ini tidak ada
-   graphviz/mermaid/inkscape/soffice.
+5. **Gambar/diagram harus tetap terbaca setelah ditempel di Word** (lebar maksimal
+   **14 cm**, karena area teks hanya 14,5 cm dengan margin 3,5/3,0 cm) dan harus
+   disertai **berkas sumber** (mis. `.drawio`). Diagram dibuat manual via matplotlib +
+   ekspor drawio karena di komputer ini tidak ada graphviz/mermaid/inkscape/soffice.
 6. **Presentasi (sempro/semhas):** ikuti susunan dan format dari contoh yang dia
    berikan; isinya tetap dari proposal miliknya. Template harus bagus karena
    **dia akan mengedit isinya sendiri nanti** (nama pembimbing/penguji, tanggal).
@@ -52,7 +52,16 @@ sebelum mengerjakan tugas dokumentasi apa pun** untuk dia.
 - Script scratch di `$LOCALAPPDATA/Temp` bisa dihapus Windows di tengah sesi —
   tulis dan jalankan skrip dalam batch yang sama.
 - Untuk ekspor PDF dan update field Word, pakai PowerShell COM
-  (`New-Object -ComObject Word.Application`) hanya bila Word tidak sedang berjalan.
+  (`New-Object -ComObject Word.Application`). Kalau Word **sedang berjalan** karena
+  user membukanya sendiri, jangan matikan prosesnya — pakai instance yang sudah ada:
+  `[Runtime.InteropServices.Marshal]::GetActiveObject('Word.Application')`, lalu
+  periksa `$d.Saved` per dokumen. Dokumen dengan `Saved=False` berarti ada perubahan
+  yang belum disimpan: **jangan tutup**, tanyakan dulu. Kalau user sudah bilang
+  "aman, hanya gambaran" / "tutup saja", tutup dengan `$d.Close(0)` (tanpa simpan) —
+  jangan `$d.Close(-1)` dan jangan menyimpan ke berkasnya.
+- Ekspor PDF tidak sama dengan membaca tata letak. Render halaman ke PNG
+  (`pymupdf` → `page.get_pixmap(dpi=100).save(...)`), lalu periksa halamannya secara
+  visual dan/atau jalankan `scripts/cek_tata_letak_pdf.py`.
 
 ### Konvensi nama berkas
 
@@ -147,6 +156,9 @@ kasus/magang → jawabannya **"cukup dicatat di skill saja, belum perlu template
 | 5 | **Judul tabel/gambar** | Pakai `Tabel 2.1.` / `Gambar 2.1.` sesuai panduan 5.3.8 (titik setelah nomor bab dan setelah nomor urut) | 18 Okt 2026 |
 | 6 | **Visibilitas repo GitHub skill ini** | **Privat** | 18 Okt 2026 |
 | 7 | **Data identitas yang boleh diisi otomatis** | Nama, NPM, program studi, departemen, fakultas, judul Proyek Akhir, nama pembimbing (tanpa NIP) | 18 Okt 2026 |
+| 8 | **Keterangan gambar antarmuka** | **Satu antarmuka = satu nomor Gambar + satu keterangan sendiri** (tidak digabung, tidak ditempel jadi satu gambar gabungan) | 19 Nov 2026 |
+| 9 | **Bab yang dikerjakan terpisah** | Bab per bab boleh jadi **berkas .docx sendiri** (mis. `bintang bab 3.docx`), tidak harus menempel ke draf I–II | 19 Nov 2026 |
+| 10 | **Halaman yang belum ada tangkapan layarnya** | Tetap diberi nomor gambar + kotak penanda, jangan dihapus dari naskah | 19 Nov 2026 |
 
 ---
 

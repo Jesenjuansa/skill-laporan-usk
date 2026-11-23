@@ -139,3 +139,15 @@ Commerce. Retrieved January 9, 2020, from https://www.census.gov/popclock/
 - Kalau menambahkan subbab baru, sediakan catatan bantu (mis.
   `Catatan bantu — sitasi subbab ini: …`) supaya user mudah memeriksa, dan boleh
   dihapus setelah disalin.
+- **Jangan percaya nama berkas jurnal** untuk mengisi volume/nomor/halaman/DOI.
+  Baca halaman pertama PDF-nya (header/footer jurnal, kotak "Article Info",
+  "APA style in citing this article") dan ambil dari sana. Nama berkas sering salah
+  tahun terbit (mis. nama menulis 2025 padahal jurnalnya terbit 2026) atau memuat
+  DOI milik artikel lain di daftar pustaka. Sitasi dalam teks yang tahunnya beda
+  dengan PDF akan langsung terlihat oleh penguji.
+- Banyak PDF jurnal memakai gaya *numbered* (`[1]`, `[2]`) di dalam isinya; saat
+  dipindahkan ke naskah USK, ubah ke APA nama–tahun. Jangan menyalin nomor kurung
+  siku.
+- Sitasi boleh diambil dari beberapa jurnal sekaligus dalam satu paragraf
+  (`(Masnauli dkk., 2024; Setiawan dkk., 2024)`), tetapi setiap nama harus punya entri
+  daftar pustaka lengkap.

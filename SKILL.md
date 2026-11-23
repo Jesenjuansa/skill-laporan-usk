@@ -58,6 +58,7 @@ kiri. Persamaan bernomor `(2.3)` rata kanan + keterangan simbol di bawahnya.
    daftar perlu konfirmasi).
 2. Lihat contoh/format yang diberikan user (laporan sebelumnya, sample, panduan).
 3. Tentukan jenis dokumen & bentuknya → `references/struktur-laporan.md`.
+   Kalau tugasnya **laporan mata kuliah/praktikum** (Pemrograman Game dsb.), pakai `references/profil-laporan-praktikum.md` — itu gaya nyata milik user, bukan format panduan TA.
 4. Bangun dokumen dari `templates/` (JANGAN mengubah berkas draft milik user; hasil
    harus berkas baru) → generator: `templates/buat_laporan_usk.py`, kerangka teks:
    `templates/kerangka-dokumen.md`.
@@ -65,9 +66,26 @@ kiri. Persamaan bernomor `(2.3)` rata kanan + keterangan simbol di bawahnya.
    referensi jurnal user dan harus bisa ditelusuri
    (`references/sitasi-daftar-pustaka.md`).
 6. Verifikasi dengan checklist di `references/struktur-laporan.md` (bagian 5); kalau
-   memungkinkan ekspor PDF lewat Word COM sebagai bukti.
+   memungkinkan ekspor PDF lewat Word COM sebagai bukti, lalu **render halamannya ke
+   PNG** (`pymupdf`) dan periksa secara visual — ekspor PDF saja tidak membuktikan
+   tata letaknya benar. Cek khusus: setiap keterangan gambar berada di halaman yang
+   sama dengan gambarnya (lihat pitfall *keep with next*).
 7. Laporkan hasil: path berkas lengkap + apa yang perlu user isi sendiri
    (NIP, tanggal, nama penguji).
+
+### Kalau diminta melanjutkan bab dari laporan orang lain (mis. "lanjutin bab 3
+### seperti file X")
+
+1. Baca draf milik user sendiri dulu (Bab I & II) — itu yang menentukan istilah,
+   aktor, nama fitur, dan cakupan sistem. Bab dari berkas orang lain **hanya** dipakai
+   sebagai acuan struktur/urutan subbab/format, jangan isinya.
+2. Buat berkas **terpisah per bab** kalau user memintanya (mis. `<nama> bab 3.docx`),
+   bukan menempel ke draf orang lain.
+3. Semua kalimat ditulis ulang; jangan salin paragraf. Nomor ilustrasi milik bab itu
+   (`Tabel 3.1`, `Gambar 3.6`, …) dan pastikan setiap nomor yang dirujuk di teks
+   benar-benar ada.
+4. Sitasi: ambil hanya jurnal PDF yang user miliki, **periksa metadata di PDF-nya**
+   (volume/nomor/halaman/DOI di header) — jangan percaya nama berkas.
 
 ## Berkas skill ini
 
@@ -76,12 +94,66 @@ kiri. Persamaan bernomor `(2.3)` rata kanan + keterangan simbol di bawahnya.
 | `references/struktur-laporan.md` | Peta & struktur: urutan bagian, sistematika bab per bentuk/jenis dokumen, format halaman pembuka, checklist verifikasi |
 | `references/format-penulisan.md` | Font, margin, spasi, nomor halaman, judul/paragraf/kutipan, tabel–gambar–persamaan, kaidah bahasa & PUEBI |
 | `references/sitasi-daftar-pustaka.md` | Sitasi APA dalam teks + 12 jenis entri daftar kepustakaan |
+| `references/mencari-gambar-referensi.md` | Mencari & mengekstrak gambar referensi (struktur organisasi, bagan) dari skripsi/LKP orang lain: kata kunci, crop `pymupdf` presisi, verifikasi visual, gambar ulang "polosan", peringatan hak pakai |
 | `references/koreksi-dan-preferensi.md` | Preferensi & koreksi user, aturan "jangan mengarang", daftar perlu konfirmasi & yang sudah dikonfirmasi |
+| `references/profil-laporan-praktikum.md` | **Gaya laporan praktikum milik user** (hasil baca Laporan I–VI): pola sampul, kata pengantar, susunan bab, format, daftar pustaka + daftar kesalahan yang harus dicek |
 | `templates/kerangka-dokumen.md` | Kerangka bab/subbab siap salin (TA 5 bab, kajian teoritis 4 bab, proposal, praktikum) |
-| `templates/buat_laporan_usk.py` | Generator kerangka .docx (margin, font, spasi, halaman pembuka, TOC) |
+| `templates/gen_bab3_laporan.py` | Contoh lengkap satu bab (BAB III): Tabel/Gambar bernomor, gambar tertanam + keterangan yang dipaksa satu halaman, kotak penanda, tabel header berulang |
+| `templates/gen_bagan_dan_keterangan.py` | Dokumen Word berdiri sendiri: bagan + `Gambar X.Y`/Sumber + daftar `Keterangan:` jabatan (1..n, a/b/c, 1/2/3) |
+| `scripts/buat_bagan_organisasi.py` | Gambar ulang bagan struktur organisasi bersih (PNG 400 dpi + SVG) dari data `SEKSI`, kanvas = lebar area teks Word |
+| `scripts/cek_tata_letak_pdf.py` | Cek PDF hasil ekspor: label Gambar yatim, blok lewat margin, nomor halaman |
 
 ## Pitfall yang sudah pernah terjadi
 
+- **Gambar referensi (bagan/struktur organisasi mitra) dicari lewat mesin pencari gambar
+  → hampir selalu gagal.** Bagan instansi kecil (cabang bank, kantor) ada sebagai
+  Gambar 2.1/4.1 di skripsi/LKP mahasiswa lain, bukan di Google Images. Cari lewat
+  pencarian teks web dengan kata `skripsi`/`LKP`/`repository`/`pdf`, lalu render halaman
+  PDF-nya dengan `pymupdf` 400 dpi dan crop berdasarkan blok teks + `get_drawings()` —
+  jangan screenshot browser. Selalu beri peringatan watermark/hak pakai + tawarkan
+  gambar ulang bersih. Prosedur lengkap: `references/mencari-gambar-referensi.md`.
+
+- **Versi "polosan" = bagan digambar ulang, bukan watermark dihapus.** Menghapus
+  watermark gambar orang lain mengubah karya orang dan hasilnya tetap kotor. Pakai
+  `scripts/buat_bagan_organisasi.py`; struktur & urutan kotak dipertahankan sama,
+  hanya salah ketik jelas yang dibetulkan, dan setiap perubahan lain (ejaan baku,
+  kalimat keterangan yang tidak gramatika) **disebutkan ke user** agar bisa ditolak.
+  Kanvas bagan harus selebar area teks Word dengan rasio ~1,55 supaya tidak mengecil.
+  Keterangan jabatan diambil dari halaman sumber yang sama, jangan dikarang.
+
+- **Jangan memutuskan crop bagan dari mata model vision.** Vision berulang kali
+  menyatakan kotak terbawah "sudah punya garis bawah" padahal masih terpotong, dan
+  setiap putaran crop memakan satu render penuh. Ambil batas dari objek PDF: kotak
+  staf = drawing `fs`, jadi batas bawah = `max(rect.y1)` dari drawing `fs` (bukan dari
+  semua drawing — garis bus selebar halaman ngang di luar bagan).
+
+- **Keterangan gambar terpisah dari gambarnya saat pindah halaman.** Paragraf gambar
+  dan paragraf keterangan harus berbagi halaman: set `keep_with_next = True` pada
+  paragraf berisi gambar **dan** `keep_together = True` pada gambarnya (python-docx:
+  `paragraph_format.keep_with_next`). Tanpa ini Word memindahkan gambarnya saja dan
+  keterangan menggantung di puncak halaman berikutnya. Untuk blok penanda (kotak
+  kosong), set `keep_with_next` pada paragraf keterangan di bawah tabelnya.
+- **Satu antarmuka = satu nomor Gambar dengan satu keterangan sendiri** `[USER]`.
+  Tiap halaman sistem dijabarkan satu per satu: paragraf penjelas → gambar →
+  keterangan di bawahnya → lanjut halaman berikutnya. Jangan menggabungkan beberapa
+  halaman ke satu nomor, dan jangan menaruh dua kotak kosong berurutan tanpa isi
+  (nomor gambar jadi "yatim"). Halaman yang belum ada tangkapan layarnya tetap diberi
+  nomor + kotak penanda bertulisan `[ TEMPATKAN TANGKAPAN LAYAR DI SINI ]`.
+- **Lebar gambar maksimal 14 cm**, bukan 15/16 cm: area teks dengan margin 3,5/3,0 cm
+  hanya **14,5 cm**, jadi gambar 15 cm sudah melewati margin kanan (kelihatan jelas
+  saat PDF dirender). Untuk kotak penanda berbasis tabel, lebar tabel juga harus
+  dipaksa (`w:tblW` + `w:tblLayout type="fixed"` + `w:gridCol`), bukan hanya
+  `cell.width`.
+- **Ukuran gambar turunkan dari PDF target, bukan dari gambar itu sendiri** — kalau
+  gambar lebih kecil dari kolom teks, jangan diperbesar melebihi ukuran aslinya
+  (blur).
+- **Jangan pakai layout `Normal (Web)`/paragraf spasi 1,0 untuk isi bab.** Saat meniru
+  gaya berkas lain, cek `paragraph_format.line_spacing` tiap paragraf: berkas contoh
+  sering sudah menyimpang dari panduan (spasi 1,0, indentasi 1,59 cm). Patuhi
+  panduan (1,5 spasi, menjorok 1,25 cm) walaupun berkas contohnya beda.
+- **Nomor halaman: naskah per bab (berdiri sendiri) mulai dari 1**; kalau nanti
+  digabung ke dokumen penuh, biarkan Word yang melanjutkan — jangan set `w:start`
+  pada section bab berikutnya.
 - Berkas .docx/.pptx yang sedang terbuka di Word/PowerPoint **terkunci** →
   `PermissionError` / `mv: Device or resource busy`. Simpan ke nama baru dulu, rapikan
   setelah Office ditutup (cek `~$*.docx`, proses WINWORD/POWERPNT).
