@@ -317,3 +317,70 @@ Indonesia. Nama Latin spesies ditulis miring.
   (bukan di dalam laporan) pakai bahasa sederhana dan sebutkan alasan setiap
   keputusan.
 - Jangan memakai markdown pada jawaban di terminal — teks polos.
+
+## BAGIAN 4 — Pola tulisan yang dipakai user (diambil dari berkasnya)
+
+Pola-pola ini muncul berulang di laporan/proposal user, jadi aman diikuti
+(penanda `[UMUM]` = kebiasaan dari berkas, bukan aturan panduan):
+
+1. **Paragraf isi 3–6 kalimat**, diawali penanda hubungan yang eksplisit:
+   "Berdasarkan kondisi tersebut, …", "Selain itu, …", "Sejalan dengan hal tersebut, …",
+   "Akibatnya, …", "Dengan demikian, …". Hindari paragraf satu kalimat.
+2. **Rumusan masalah bisa berbentuk pernyataan** ("Belum tersedianya …"), asal
+   jumlahnya sejajar dengan jumlah tujuan dan manfaat. Sering 4 poin di proposal,
+   2–3 poin di laporan praktikum.
+3. **Setiap butir tujuan/manfaat dimulai kata kerja** (Merancang, Memusatkan,
+   Memfasilitasi, Membantu) dan menjawab butir rumusan masalah yang sama nomornya.
+4. **Latar belakang praktikum** berisi: pentingnya bagian yang dibuat → apa yang
+   akan dibuat → hasil yang diharapkan. Cukup 1–2 paragraf.
+5. **Bab II praktikum** hanya memuat konsep dasar yang benar-benar dipakai di Bab III
+   (bukan teori panjang); 1 subbab = 1 konsep, masing-masing 2–4 kalimat.
+6. **Langkah di Bab III ditulis perintah kerja** ("Klik kanan → 3D Object → Cylinder,
+   beri nama Player, atur posisi …"), memakai istilah menu asli aplikasi.
+7. **Kode program**: blok lengkap, diawali nama berkas, memakai nama variabel/fungsi
+   berbahasa Indonesia (mis. `kecepatan`, `koinTerkumpul`, `PerbaruiTeks`).
+8. **Kesimpulan** menjawab rumusan masalah satu per satu, biasanya 2–4 paragraf pendek.
+9. **Saran** 1 paragraf, berupa rencana pengembangan lanjutan yang konkret.
+
+### Cacat yang pernah terjadi di berkas user (jangan diulang)
+
+| Cacat | Berkas | Perbaikan |
+|---|---|---|
+| Subbab ada di daftar isi tetapi bab kosong | LAPORAN UTS | daftar isi harus sama dengan isi |
+| NPM semua anggota kelompok sama | LAPORAN UTS | tiap anggota NPM sendiri |
+| Judul di kata pengantar tidak sama dengan judul sampul | LAPORAN UTS | samakan |
+| Daftar pustaka tidak ada padahal memakai aplikasi | LAPORAN 1–3 | cantumkan sumber resmi |
+| Keterangan gambar tidak konsisten (titik/strip) | LAPORAN 1–4 | pakai satu gaya (gaya Laporan VI) |
+| Bagian "3.2 Jebakan dan player berkedip…" isinya soal koin | LAPORAN 3 | judul subbab harus sesuai isi |
+
+## CEK-CEPAT SEBELUM SERAH (jalankan skrip ini)
+
+```python
+# cek_cepat.py — C:/Python314/python.exe cek_cepat.py "D:/lab game/LAPORAN X.docx"
+import sys, re, docx
+from docx.oxml.ns import qn
+W = '{http://schemas.openxmlformats.org/wordprocessingml/2006/main}'
+d = docx.Document(sys.argv[1])
+els = list(d.element.body)
+img = cap = tanpa_cap = 0
+for i, el in enumerate(els):
+    if el.tag == W + 'p' and el.find('.//' + W + 'drawing') is not None:
+        img += 1
+        nxt = ''.join(t.text or '' for t in els[i + 1].iter(W + 't')).strip() if i + 1 < len(els) else ''
+        if not re.match(r'(Gambar|Sumber)', nxt):
+            tanpa_cap += 1
+ps = [p.text.strip() for p in d.paragraphs]
+cap = len([p for p in ps if re.match(r'Gambar\s*\d', p)])
+satu = [p for p in ps if len(p.split()) > 8 and p.endswith('.')
+        and len([s for s in re.split(r'(?<=[.!?])\s+', p) if s]) == 1]
+s = d.sections[0]
+print('margin   %.2f/%.2f/%.2f/%.2f cm' % (s.left_margin.cm, s.top_margin.cm,
+                                           s.right_margin.cm, s.bottom_margin.cm))
+print('gambar   %d | keterangan %d | gambar tanpa keterangan %d' % (img, cap, tanpa_cap))
+print('paragraf 1 kalimat: %d' % len(satu))
+print('daftar pustaka ada:', any('DAFTAR PUSTAKA' in p.upper() for p in ps))
+print('kode program (using/public class):', sum(1 for p in ps if p.startswith(('using ', 'public '))))
+```
+
+Target lulus: **gambar tanpa keterangan = 0**, **paragraf 1 kalimat = 0**,
+margin 3,50/3,00/2,50/3,00 cm (atau sesuai permintaan user), daftar pustaka ada.

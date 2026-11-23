@@ -1,4 +1,4 @@
-# Profil Laporan Praktikum (gaya Jesen Juansa) — hasil baca Laporan I–VI
+# Profil Laporan Praktikum (gaya user) — hasil baca Laporan I–VI
 
 Berkas ini merangkum **pola nyata laporan praktikum yang Anda buat sendiri** (Laporan
 I, II, III, IV, VI, dan Tugas Pemrograman Game di `D:\lab game`). Dipakai kalau
@@ -87,7 +87,7 @@ Cylinder, lalu beri nama Player"), setiap langkah diikuti satu gambar
 Diambil dari masalah yang benar-benar ada di berkas/laporan yang dikerjakan:
 
 1. **Gambar milik orang lain.** Laporan IV pertama memakai 12 tangkapan layar dari
-   laporan teman (Naima). Hanya boleh dipakai kalau user mengizinkan; sisanya
+   laporan teman sekelas. Hanya boleh dipakai kalau user mengizinkan; sisanya
    diambil dari komputer sendiri atau dikosongkan.
 2. **Gambar tidak diberi keterangan / keterangan tidak cocok dengan isinya.** Setiap
    gambar WAJIB punya keterangan `Gambar <bab>.<nomor>` dan isinya harus sesuai
@@ -101,7 +101,7 @@ Diambil dari masalah yang benar-benar ada di berkas/laporan yang dikerjakan:
    gambar saja, tanpa teks). Kalau tugasnya berupa gambar, beri keterangan minimal.
 6. **Data pribadi di dalam laporan** (nama, NPM, nama pembimbing) — wajar di naskah,
    tapi **jangan** dimasukkan ke skill/repo.
-7. **Versi perangkat tidak konsisten** antar laporan (Naima menulis Unity
+7. **Versi perangkat tidak konsisten** antar laporan (teman sekelas menulis Unity
    `2022.3.62f2`, komputer Anda memasang `2022.3.62f3`). Tulis versi yang benar-benar
    dipakai; cek di Unity Hub menu Installs.
 8. **Angka/ukuran di langkah harus sama dengan yang dipakai** (posisi objek, skala,

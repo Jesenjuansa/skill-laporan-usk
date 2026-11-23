@@ -32,6 +32,24 @@ ketentuan user · `[UMUM]` kebiasaan dari berkasnya (bukan aturan) ·
 Sumber otoritatif: `D:\PROYEK AKHIR\_PANDUAN TA-TESIS 2024_Final.pdf`. Kalau ada
 perbedaan dengan berkas ini, panduan yang menang.
 
+## Standar mutlak sebelum laporan diserahkan
+
+Diukur dari berkas user sendiri: laporan lama yang dibuat tanpa aturan ini
+menggantung 0 keterangan untuk 4–14 gambar dan berisi 10–23 paragraf satu kalimat;
+Laporan VI milik user punya 16 keterangan dari 17 gambar. Jadi **sebelum menyerahkan**:
+
+- Setiap gambar punya `Gambar <bab>.<nomor>  <judul>` tepat di bawahnya, dan dirujuk
+  dari teks.
+- Tidak ada paragraf **isi** yang hanya 1 kalimat (butir rumusan/tujuan/manfaat,
+  langkah bernomor, dan keterangan gambar **boleh** 1 kalimat).
+- Daftar isi = isi naskah (tidak ada subbab hantu, tidak ada subbab kosong).
+- Kode program ditulis lengkap dengan nama berkasnya bila membahas skrip.
+- Kesimpulan per bagian dan menjawab rumusan masalah; saran teknis & spesifik.
+- Daftar pustaka ada, alfabetis, dan semua sumber yang disebut tercantum.
+- Margin kiri 3,50 cm; atas/kanan/bawah 3,00 cm (**kanan 3,00, bukan 2,50**).
+- Jalankan skrip `CEK-CEPAT` di `references/format-penulisan.md`; target:
+  gambar tanpa keterangan = 0, paragraf isi 1 kalimat = 0.
+
 ## Aturan inti (ringkas — rincian di references/)
 
 `[PANDUAN]` A4 · **Times New Roman 12 pt** · margin **kiri 3,5 cm**, atas/kanan/bawah
@@ -127,6 +145,35 @@ kiri. Persamaan bernomor `(2.3)` rata kanan + keterangan simbol di bawahnya.
   staf = drawing `fs`, jadi batas bawah = `max(rect.y1)` dari drawing `fs` (bukan dari
   semua drawing — garis bus selebar halaman ngang di luar bagan).
 
+- **Gambar "bocor" keluar margin kanan padahal lebar gambar sudah 14 cm.** Bukan
+  gambarnya yang salah: diksi `keep_together=True` pada paragraf berisi gambar membuat
+  python-docx menambahkan `w:pBdr` dengan sisi *kiri/kanan bergaris*, yang menambah
+  ±0,1 cm ke kiri dan kanan sehingga blok melewati batas teks. Setelah menyetel
+  `keep_together`, tulis ulang `w:pBdr` dengan keempat sisi `w:val="nil"`. Verifikasi
+  dari objek PDF, bukan dari mata: `get_image_info()[..]['bbox']` harus berhenti
+  ≤ margin kanan (A4: 595,3 pt − 3,0 cm = 510,3 pt). Kotak-kotak 1–2 pt yang muncul
+  di daftar blok lewat margin biasanya artefak bbox baris justify dan footer, jadi
+  periksa dulu lebar gambarnya sebelum mengecilkan apa pun.
+
+- **Kalau user mengganti tanggal/jam kegiatan, ubah SEMUA turunannya sekaligus.**
+  Perubahan tanggal menyentuh minimal empat tempat dan satu pun yang terlewat membuat
+  laporan tidak konsisten: (1) baris tabel rincian harian, (2) **urutan baris** —
+  pindahkan ke posisi kronologis (tabel absensi sering menaruh baris tambahan di
+  paling bawah, bukan di urutannya), (3) rentang tanggal di paragraf pokok, (4) narasi
+  pembuka/penutup yang menyebut "hari pertama", "minggu keempat", "diakhiri pada".
+  Setelah itu hitung ulang tabel rekapitulasi dan jumlah hari kerja dari data, jangan
+  diedit manual. Sebutkan ke user hal yang ikut berubah di luar yang dia minta
+  (mis. hari kerja hasil luncuran akhir pekan) dan tawarkan menyamakan berkas lain
+  yang masih memakai tanggal lama (kartu kendali/absensi) — tapi jangan mengubah berkas
+  itu tanpa izin.
+
+- **Menelusuri data kegiatan dari laporan ke kartu kendali: baca tabelnya, bukan teks
+  ekstraksi.** `read_file` pada .docx mengeluarkan isi tabel berurutan per baris,
+  sehingga baris kartu kendali terlihat tidak kronologis/salah tempat. Ambil data
+  dengan `docx.Document(p).tables[0].rows` lalu urutkan sendiri; bandingkan juga
+  tanggal mulai di Bab III dengan baris pertama kartu kendali, dan laporkan selisihnya
+  sebagai hal yang perlu dikonfirmasi, bukan diasumsikan salah satu yang benar.
+
 - **Keterangan gambar terpisah dari gambarnya saat pindah halaman.** Paragraf gambar
   dan paragraf keterangan harus berbagi halaman: set `keep_with_next = True` pada
   paragraf berisi gambar **dan** `keep_together = True` pada gambarnya (python-docx:
@@ -167,6 +214,13 @@ kiri. Persamaan bernomor `(2.3)` rata kanan + keterangan simbol di bawahnya.
   `word/settings.xml` atau update lewat Word COM.
 - Tidak ada LibreOffice/soffice/pdftoppm di komputer ini; pakai Word lewat PowerShell
   COM untuk cek dokumen + ekspor PDF (pastikan WINWORD tidak sedang dipakai user).
+  `GetActiveObject` gagal `MK_E_UNAVAILABLE (0x800401E3)` begitu Word tidak lagi
+  berjalan atau tidak punya dokumen terbuka. Jangan menganggapnya error permanen:
+  buang dulu baris `PDF_OK` yang tercetak walau `$d` null (skrip PowerShell ini tetap
+  jalan sampai akhir), cek `tasklist | grep -i winword`, lalu kalau tidak ada instance
+  hidup pakai `New-Object -ComObject Word.Application` + `$w.Visible = $false` +
+  `$w.Quit()` di akhir. Ekspor yang benar selalu mengembalikan `ComputeStatistics(2)`
+  (jumlah halaman) — kalau baris itu kosong, PDF belum dibuat.
 - Skrip Office dijalankan dengan `C:/Python314/python.exe` (venv hermes tanpa pip).
 
 ## Cara memperbarui skill

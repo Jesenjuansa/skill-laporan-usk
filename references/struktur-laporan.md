@@ -327,6 +327,14 @@ Yang perlu diketahui (jangan dikarang bila tidak yakin):
   **BAB I Pendahuluan → BAB II Profil Instansi/Tempat Magang → BAB III Pelaksanaan
   Kegiatan (uraian kerja, jadwal, kendala) → BAB IV Simpulan dan Saran**, dilengkapi
   lampiran (surat, log book/kartu bimbingan, dokumentasi) dan biodata.
+- `[USER]` Varian prodi D-III Manajemen Informatika (dipakai user pada laporan kerja
+  praktik): **5 bab** — I Pendahuluan, II Profil Organisasi dan Manajemen (2.3 struktur
+  organisasi: bagan + daftar `Keterangan:` per jabatan), III Metode Kerja (waktu &
+  tempat, ruang lingkup, alat & bahan, metode), IV Hasil dan Pembahasan, V Kesimpulan
+  dan Saran. **Bab IV** memuat `4.1 Rincian Kegiatan` (tabel harian
+  No / Hari-Tanggal / Kegiatan, bersumber dari kartu kendali), `4.3 Rekapitulasi
+  Kegiatan` (jenis kegiatan + jumlah hari), kendala–solusi, lalu pembahasan. Rekap
+  dihitung ulang dari tabel harian, jangan diketik dari ingatan.
 - Untuk pengakuan sebagai pengganti TA, ikuti ketentuan 5.1.3.b: proyek magangnya
   harus **berbeda** dari magang pengganti 20 SKS MBKM dan porsinya lebih signifikan.
 
@@ -641,3 +649,285 @@ Pemeriksaan lanjutan yang berguna:
   keterangan gambar, bagian yang sengaja dikosongkan.
 - Kalau ada yang tidak bisa diverifikasi di komputer ini (mis. render gambar),
   sebutkan terus terang.
+
+## BAGIAN 6 — Rapor format laporan praktikum (diukur dari berkas user)
+
+Hasil pengukuran langsung berkas Word milik user:
+
+| Berkas | Margin kiri/atas/kanan/bawah | Font | Spasi | Gambar | Section |
+|---|---|---|---|---|---|
+| LAPORAN 1 | 3,50 / 3,00 / **2,50** / 3,00 cm | TNR 12 | 1,5 | 14 | 7 |
+| LAPORAN 2 | sama | TNR 12 | 1,5 | 9 | 8 |
+| LAPORAN 3 | sama | TNR 12 | 1,5 | 4 | 8 |
+| LAPORAN 4 | sama | TNR 12 | 1,5 | 14 | 8 |
+| LAPORAN UTS | sama | TNR 12 | 1,5 | 1 | 7 |
+| **LAPORAN 6** | **3,00 / 3,00 / 3,00 / 3,00 cm** | TNR 12 | 1,5 | 17 | 3 |
+
+Kesimpulan: garis besar format laporan praktikum konsisten (A4, TNR 12, spasi 1,5,
+margin atas/bawah 3 cm). **Beda yang pernah muncul:** margin kanan 2,50 cm pada
+laporan I–IV dan UTS, sedangkan Laporan VI memakai 3,00 cm semua sisi (kiri 3,00).
+
+**[KOREKSI] Margin kanan yang benar: 3,00 cm.** Panduan FMIPA 2024 pasal 5.3.1
+(dibaca ulang 23 Nov 2026) menetapkan: kiri **3,50 cm**, atas **3,00 cm**,
+kanan **3,00 cm**, bawah **3,00 cm**. Jadi laporan I–IV/UTS (kanan 2,50) menyimpang
+dari panduan dan **tidak boleh ditiru**. Format laporan praktikum baru:
+**3,50 / 3,00 / 3,00 / 3,00 cm** (Laporan VI sudah mendekati: 3,00 semua sisi,
+kiri masih kurang 0,5 cm).
+
+### Pola penomoran gambar yang benar-benar dipakai user
+
+| Versi | Contoh di berkas | Catatan |
+|---|---|---|
+| Laporan I–IV (caption otomatis Word) | `Gambar 3.1` + judul di bawah | tanpa titik setelah nomor |
+| **Laporan VI (paling baru & paling rapi)** | `Gambar 3.1  Scene permainan yang sudah diberi lantai dan cahaya` | **nomor tanpa titik + DUA spasi** sebelum judul, bukan titik dua |
+
+Untuk laporan praktikum baru ikuti **gaya Laporan VI**, lalu konsisten di seluruh naskah.
+
+**Catatan konflik aturan (diselesaikan 23 Nov 2026):** berkas
+`format-penulisan.md` (aturan panduan 5.3.8) menulis `Tabel 2.1.` / `Gambar 2.1.`
+**dengan titik**, sedangkan kebiasaan nyata user menulis **tanpa titik**.
+Keputusan: pada **laporan praktikum** ikuti kebiasaan user (tanpa titik, dua spasi);
+pada **dokumen TA/Proyek Akhir/Tesis** ikuti panduan (dengan titik). Sampaikan
+perbedaan ini ke user, jangan diam-diam memilih.
+
+### Struktur laporan praktikum yang dipakai (Laporan VI — jadikan acuan)
+
+```
+KATA PENGANTAR (1 paragraf pembuka + 1 paragraf isi + 1 paragraf penutup;
+                tanpa daftar ucapan bernomor)
+DAFTAR ISI (memuat subsubbab 3.2.1 dst.)
+BAB I PENDAHULUAN        1.1 Latar Belakang · 1.2 Rumusan Masalah · 1.3 Tujuan · 1.4 Manfaat
+BAB II LANDASAN TEORI    satu subbab per konsep DASAR yang benar-benar dipakai di Bab III
+                         (mis. GameObject & Component, Transform/Rigidbody/Collider, Trigger,
+                         Skrip C# & MonoBehaviour, Canvas & UI)
+BAB III PROSES DAN HASIL 3.1 Persiapan Proyek
+                         3.2 <Bagian yang dibuat> → 3.2.1, 3.2.2 … (satu langkah satu subsubbab)
+                         3.3 … 3.4 … (bagian berikutnya)
+                         3.x Hasil Akhir
+                         3.y Struktur Berkas
+BAB IV PENUTUP           4.1 Kesimpulan · 4.2 Saran
+DAFTAR PUSTAKA           minimal 2–5 sumber resmi (dokumentasi resmi mesin/engine, dsb.)
+```
+
+Ciri khas yang membuat Laporan VI rapi — **wajib ditiru**:
+1. Setiap subsubbab = satu langkah kerja konkret, langsung diikuti gambar.
+2. **Kode program ditulis lengkap sebagai blok**, nama berkasnya di atas blok
+   (mis. `PlayerGerak.cs`), lalu gambar hasilnya.
+3. Angka dan nama objek ditulis persis seperti di aplikasi (mis. `Scale 14, 0.5, 14`,
+   `posisi 0, 1, -3`, `Freeze Rotation`, `Is Trigger`).
+4. Ada subbab **Hasil Akhir** (permainan dicoba) dan **Struktur Berkas** (letak skrip/scene).
+5. Kesimpulan ditulis **per bagian** (player satu paragraf, koin & perangkap satu
+   paragraf, tampilan satu paragraf) — bukan satu paragraf umum.
+6. Saran bersifat teknis dan spesifik (animasi, nilai dari Inspector, suara, tombol
+   pada panel), bukan saran umum.
+7. Istilah teknis Inggris dipakai apa adanya tanpa dimiringkan (GameObject, Rigidbody,
+   Collider, Canvas, SetActive, OnTriggerEnter) — kebiasaan user pada laporan praktikum.
+
+## BAGIAN 7 — Rapor proposal Proyek Akhir D3 (diukur dari proposal user)
+
+Dari `PROPOSAL PROYEK AKHIR JESEN JUANSA.pdf` (Okt 2026):
+
+- Sistematika yang dipakai user: **BAB I Pendahuluan (1.1 Latar Belakang, 1.2 Rumusan
+  Masalah, 1.3 Tujuan, 1.4 Manfaat) → BAB II Tinjauan Pustaka (2.1 … dengan subsubbab
+  2.3.1, 2.3.2 …) → BAB III Metode dan Penelitian (3.1 Waktu dan Tempat Penelitian,
+  3.2 Alat dan Bahan, 3.3 Metode Kerja, 3.3.1 Analisis Kebutuhan, 3.3.2 Perancangan
+  Sistem) → DAFTAR PUSTAKA**. Judul Bab II ditulis **"TINJAUAN PUSTAKA"** (panduan
+  memakai "Tinjauan Kepustakaan") — keduanya pernah dipakai; ikuti yang dipakai user
+  pada berkas terakhir.
+- Halaman pembuka yang dipakai: **Sampul → PENGESAHAN (judul Indonesia + judul
+  Inggris, Pembimbing I/II, Koordinator Prodi) → KATA PENGANTAR → DAFTAR ISI →
+  DAFTAR GAMBAR → DAFTAR TABEL**. Proposal tidak memakai abstrak.
+- Pengesahan: "Disetujui Oleh:" (Pembimbing I / Pembimbing II) lalu "Mengetahui:" +
+  Koordinator Program Studi. NIP ditulis lengkap.
+- Kata Pengantar user: dibuka doa, lalu **daftar ucapan bernomor 1–10** (orang tua,
+  Dekan, Ketua/Kepala Departemen, Ketua Prodi/Pembimbing I, dosen wali, koordinator
+  proyek akhir, Pembimbing II, seluruh dosen, teman-teman, pihak lain), ditutup
+  paragraf harapan + tempat/tanggal + "Yang menyatakan," + nama + NPM.
+- Gambar/tabel di Bab III dinomori `Gambar 3.1`, `Gambar 3.2`, … dan `Tabel 3.1`,
+  `Tabel 3.2` — angka saja, tanpa titik, di daftar gambar/tabel.
+- Rumusan masalah user ditulis sebagai **pernyataan keadaan yang belum ada**
+  ("Belum tersedianya …", "Belum adanya …"), bukan pertanyaan. Sah menurut panduan.
+- Istilah asing **dimiringkan** (*website*, *framework*, *roasting*, *payment gateway*,
+  *e-commerce*, *black-box testing*). Ini **berbeda** dengan laporan praktikum
+  (Bagian 6 butir 7): pada dokumen TA/Proyek Akhir istilah asing dimiringkan.
+
+### Kedalaman teori yang dinilai cukup (pola user)
+
+Setiap subbab teori = **1 paragraf panjang (150–250 kata)** dengan urutan:
+(1) definisi + sitasi, (2) fungsi/cara kerja + sitasi, (3) penelitian lain yang
+memakai + sitasi, (4) **penerapan pada sistem yang dibangun** ("Pada sistem
+informasi penjualan Kopi Gayo MD Coffee Gayo, HTML digunakan untuk …"). Butir (4)
+inilah yang membedakan tulisan yang dinilai selesai dengan yang masih dangkal —
+selalu ada.
+
+## BAGIAN 8 — Rapor laporan UTS (ujian tengah semester)
+
+Dari `LAPORAN UTS.docx`:
+- Kerangkanya **sama** dengan laporan praktikum biasa (sampul, kata pengantar,
+  daftar isi, BAB I–IV; berkas itu tanpa daftar pustaka).
+- Bedanya hanya di sampul: `Laporan Ujian Tengah Semester Pratikum Pemrograman Game`
+  dan baris `tugas UTS mata kuliah Pemrograman Game`.
+- Laporan UTS boleh **berkelompok** → nama anggota ditulis satu per baris di bawah
+  "Oleh:" dengan susunan `NAMA` + tab + `NPM`.
+- Daftar isi pada berkas itu **masih menyebut subbab yang tidak ada isinya**
+  (3.1–3.4 tertulis di daftar isi padahal Bab III kosong). Ini **cacat yang pernah
+  terjadi**, jangan diulang: nomor di daftar isi harus sama dengan isi naskah.
+
+## Syarat mutlak agar laporan dinilai rapi (diukur dari berkas user)
+
+Angka di bawah berasal dari pemeriksaan otomatis berkas Word milik user:
+
+| Berkas | Gambar | Punya keterangan `Gambar 3.x` | Paragraf 1 kalimat |
+|---|---|---|---|
+| LAPORAN 1 | 14 | **0** | 23 |
+| LAPORAN 2 | 9 | **0** | 15 |
+| LAPORAN 3 | 4 | **0** | 10 |
+| LAPORAN 4 | 14 | 13 | 15 |
+| LAPORAN UTS | 1 | **0** | 9 |
+| **LAPORAN 6** | 17 | 16 | 6 |
+
+Artinya: laporan lama yang dibuat tanpa aturan ini **menggantung gambarnya tanpa
+keterangan** dan penuh paragraf satu kalimat. Laporan baru **wajib** memenuhi
+daftar berikut sebelum diserahkan:
+
+1. **Setiap gambar punya nomor + judul** (`Gambar 3.4  Tampilan menu Installs`) tepat
+   di bawah gambar, dan setiap gambar disebut dari dalam teks ("… ditunjukkan pada
+   Gambar 3.4").
+2. **Tidak ada gambar tanpa keterangan** dan **tidak ada keterangan tanpa gambar**.
+3. **Tidak ada paragraf yang hanya berisi satu kalimat** (kecuali kalimat
+   pengantar daftar, mis. "Berikut ini adalah langkah-langkahnya.").
+4. **Daftar isi = isi naskah**: nomor subbab di daftar isi harus ada di naskah dan
+   sebaliknya.
+5. **Setiap subbab berisi**: kalimat pengantar → langkah/tabel/gambar → penutup
+   singkat. Subbab kosong (hanya judul) dilarang.
+6. **Kode program ditulis lengkap** bila membahas skrip, dengan nama berkasnya.
+7. **Kesimpulan menjawab rumusan masalah satu per satu**; saran teknis dan spesifik.
+8. **Daftar pustaka ada** (minimal 2–5 sumber resmi) dan semua sumber yang
+   disebut di naskah tercantum.
+9. **Identitas lengkap dan konsisten**: judul di sampul = judul di kata pengantar =
+   judul di halaman lain; NPM tiap anggota benar (laporan kelompok).
+10. **Gaya keterangan gambar konsisten** satu gaya di seluruh naskah.
+
+### Cacat yang terbukti pernah terjadi (dari berkas user) — periksa ini dulu
+
+| Cacat | Berkas | Bukti | Perbaikan |
+|---|---|---|---|
+| Gambar tanpa keterangan | LAPORAN 1, 2, 3, UTS | 0 keterangan untuk 4–14 gambar | beri `Gambar 3.x  judul` |
+| Paragraf satu kalimat | LAPORAN 1 (23), 2 (15), 3 (10), 4 (15) | dihitung otomatis | gabung dengan kalimat berikutnya |
+| Subbab di daftar isi tapi bab kosong | LAPORAN UTS | 3.1–3.4 terdaftar, Bab III kosong | samakan daftar isi dengan isi |
+| Judul subbab tidak sesuai isi | LAPORAN 3 | "3.2 Jebakan dan player berkedip…" isinya koin | judul = isi |
+| NPM seluruh anggota sama | LAPORAN UTS | 4 nama, 1 NPM | NPM masing-masing |
+| Judul kata pengantar ≠ judul sampul | LAPORAN UTS | "Perancangan dan Implementasi…" vs judul sampul | samakan |
+| Daftar pustaka tidak ada | LAPORAN 1–3, UTS | tidak ada bagiannya | tambahkan sumber resmi |
+| Gambar milik orang lain dipakai | LAPORAN 4 versi awal | 12 screenshot dari laporan teman | ambil sendiri / minta izin dan sebutkan |
+| Teks menyalin laporan teman | LAPORAN 4 versi awal | 4 paragraf ≥50% identik, 38 kalimat ≥60% | tulis ulang dengan kalimat sendiri |
+
+## Contoh kerangka laporan praktikum (pola Laporan VI — tiru bentuknya)
+
+```
+KATA PENGANTAR
+Bismillahirrahmanirrahim.
+Puji syukur kehadirat Allah SWT karena laporan dengan judul "<judul>" ini dapat diselesaikan.
+Laporan ini membahas <ringkasan 1 kalimat isi laporan>. Setiap langkah dijelaskan beserta gambarnya.
+Saya sadar laporan ini masih ada kekurangannya, jadi kritik dan saran sangat diharapkan. Semoga laporan ini bisa bermanfaat.
+
+Banda Aceh, <tanggal>
+Penyusun,
+
+<NAMA>
+NPM : <NPM>
+
+DAFTAR ISI
+
+BAB I  PENDAHULUAN
+1.1  Latar Belakang            — pentingnya bagian yang dibuat (1–2 paragraf)
+1.2  Rumusan Masalah           — 2 poin, boleh berbentuk pertanyaan
+1.3  Tujuan Praktikum          — 2 poin, sejajar dengan rumusan masalah
+1.4  Manfaat Praktikum         — 2 poin (bagi penulis, bagi pembaca)
+
+BAB II  LANDASAN TEORI
+2.1  <konsep dasar 1>          — 2–4 kalimat, hanya yang dipakai di Bab III
+2.2  <konsep dasar 2>
+2.3  <konsep dasar 3>
+2.4  <konsep dasar 4>
+2.5  <konsep dasar 5>
+
+BAB III  PROSES DAN HASIL PRAKTIKUM
+3.1  Persiapan Proyek
+3.2  <Bagian utama 1>
+     3.2.1  <langkah 1>   ← satu tindakan + gambar
+     3.2.2  <langkah 2>
+     3.2.3  <langkah 3>
+3.3  <Bagian utama 2>
+     3.3.1 …
+3.4  <Bagian utama 3>
+3.5  Hasil Akhir
+3.6  Struktur Berkas
+
+BAB IV  PENUTUP
+4.1  Kesimpulan                — per bagian, menjawab rumusan masalah
+4.2  Saran                     — teknis & spesifik
+
+DAFTAR PUSTAKA                 — 2–5 sumber resmi
+```
+
+### Bentuk paragraf langkah yang benar (satu subsubbab)
+
+> Klik kanan pada jendela Hierarchy, pilih 3D Object → Cylinder, lalu beri nama
+> Player. Posisinya diatur ke 0, 1, dan -3 supaya berdiri di atas lantai. Tag objek
+> diubah menjadi Player supaya bisa dikenali skrip koin dan perangkap.
+>
+> Gambar 3.2  Pemain berbentuk tabung (Cylinder)
+
+### Bentuk blok kode yang benar
+
+> Skrip PlayerGerak.cs dibuat di folder Assets/Scripts, lalu ditempelkan ke objek
+> Player. Skrip ini membaca tombol lewat Input.GetAxis, lalu mengubah kecepatan
+> Rigidbody pada sumbu X dan Z.
+>
+> PlayerGerak.cs
+> ```
+> using UnityEngine;
+>
+> public class PlayerGerak : MonoBehaviour
+> {
+>     public float kecepatan = 6f;
+>     ...
+> }
+> ```
+>
+> Gambar 3.5  Skrip PlayerGerak pada objek Player
+
+### Kapan "paragraf satu kalimat" masih boleh (penting agar tidak salah hitung)
+
+Pemeriksaan otomatis akan ikut menghitung baris pendek yang **bukan paragraf isi**.
+Yang berikut ini **boleh** satu kalimat dan jangan digabung:
+
+1. Butir **rumusan masalah, tujuan, manfaat** (satu butir = satu kalimat).
+2. **Langkah bernomor** pada Bab III (satu langkah = satu kalimat).
+3. **Kalimat pengantar** sebelum daftar ("Berikut ini adalah langkah-langkahnya.").
+4. Baris **keterangan gambar/tabel** (`Gambar 3.2  …`).
+5. Paragraf pembuka/isi/penutup **kata pengantar** (boleh pendek).
+
+Yang **tidak boleh**: paragraf **isi** (BAB I latar belakang, BAB II teori, BAB III
+penjelasan, BAB IV kesimpulan/saran) yang hanya berisi satu kalimat. Patokannya:
+paragraf isi minimal **2–3 kalimat**.
+
+### Kelemahan nyata LAPORAN 4 revisi (perbaiki pada revisi berikutnya)
+
+Diukur pada `LAPORAN 4.docx` versi 18 Okt 2026: 14 gambar, 13 keterangan,
+**1 gambar tanpa keterangan**, dan 15 baris satu kalimat — 10 di antaranya sah
+(langkah + butir tujuan/manfaat), **3 di antaranya benar-benar lemah** dan harus
+diperbaiki pada revisi berikutnya:
+
+| Bagian | Kalimat tunggal | Perbaikan yang benar |
+|---|---|---|
+| BAB I 1.1 Latar Belakang | hanya 2 paragraf, masing-masing 3–5 kalimat tetapi belum menyebut kondisi di komputer sendiri | tambahkan 1 paragraf: kondisi awal sebelum praktikum, versi Unity yang dipakai, hasil yang diharapkan |
+| BAB IV 4.1 Kesimpulan | 1 paragraf untuk seluruh laporan | pecah menjadi 2–3 paragraf: (a) Unity Hub & pemasangan, (b) Unity Editor & modul, (c) proyek siap dipakai |
+| BAB III 3.1–3.3 | kalimat pengantar tiap subbab hanya 1 kalimat | tambahkan 1 kalimat tujuan/konteks sebelum langkah |
+| Gambar | 1 gambar tanpa keterangan | beri `Gambar 3.x  judul` |
+| Teks | masih ada kalimat langkah yang menyerupai laporan contoh | tulis ulang dengan kalimat sendiri |
+
+**Pelajaran untuk sesi berikutnya:** jangan hanya mengganti gambar dan menyalin
+ulang teks; periksa juga jumlah paragraf per subbab, komposisi kesimpulan, dan
+keterangan gambar mengikuti daftar di atas.

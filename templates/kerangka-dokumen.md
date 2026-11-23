@@ -111,3 +111,57 @@ BAB I PENDAHULUAN .................................................... 1
 ...
 DAFTAR KEPUSTAKAAN ................................................... <n>
 ```
+
+## H. Laporan praktikum versi rapi (pola Laporan VI — paling direkomendasikan)
+
+```
+Sampul
+  Laporan <I/II/III/IV/VI> Pratikum Pemrograman Game
+  JUDUL SINGKAT KAPITAL (mis. MEMBUAT PLAYER, KOIN, PERANGKAP, DAN TAMPILAN MENANG atau KALAH)
+  Disusun untuk memenuhi / tugas mata kuliah Pemrograman Game
+  Oleh: <NAMA> / <NPM>
+  PROGRAM STUDI DIII MANAJEMEN INFORMATIKA · JURUSAN INFORMATIKA
+  FAKULTAS MATEMATIKA DAN ILMU PENGETAHUAN ALAM UNIVERSITAS SYIAH KUALA
+  BANDA ACEH, <BULAN> <TAHUN>
+
+KATA PENGANTAR  (3 paragraf pendek: pembuka doa · isi laporan · penutup + kritik/saran)
+                 diakhiri: Banda Aceh, <tanggal> / Penyusun, / NAMA / NPM : ...
+
+DAFTAR ISI      (tab leader, halaman; memuat subsubbab 3.x.y)
+
+BAB I PENDAHULUAN
+  1.1 Latar Belakang       (1–2 paragraf: bagian game itu penting → apa yang dibuat → hasil)
+  1.2 Rumusan Masalah      (2 poin bernomor: "Bagaimana membuat …?", "Bagaimana …?")
+  1.3 Tujuan Praktikum     (2 poin, sejajar rumusan masalah)
+  1.4 Manfaat Praktikum    (2 poin: bagi penulis, bagi pembaca)
+
+BAB II LANDASAN TEORI      (satu subbab = satu konsep dasar yang dipakai di Bab III)
+  2.1 <GameObject dan Component>
+  2.2 <Transform, Rigidbody, dan Collider>
+  2.3 <Trigger>
+  2.4 <Skrip C# dan MonoBehaviour>
+  2.5 <Canvas dan UI>
+
+BAB III PROSES DAN HASIL PRAKTIKUM
+  3.1 <Persiapan Proyek>            (versi engine, nama proyek, scene awal, lantai/cahaya)
+       → Gambar 3.1  <judul>
+  3.2 <Bagian utama 1>
+      3.2.1 <langkah 1>             teks 2–4 kalimat + Gambar 3.2
+      3.2.2 <langkah 2>             teks + Gambar 3.3
+      3.2.3 <langkah skrip>         teks + blok kode (nama berkas.cs) + Gambar
+  3.3 <Bagian utama 2>  3.3.1 … 3.3.2 … 3.3.3 …
+  3.4 <Bagian utama 3>  3.4.1 … 3.4.2 … 3.4.3 …
+  3.5 <Bagian utama 4>  3.5.1 … (Canvas, teks, panel, skrip pengatur)
+  3.6 Hasil Akhir        (permainan dicoba: apa yang terjadi) → Gambar
+  3.7 Struktur Berkas    (letak skrip/scene) → Gambar
+
+BAB IV PENUTUP
+  4.1 Kesimpulan    (per bagian: player / koin & perangkap / tampilan — masing-masing 1 paragraf;
+                     menjawab rumusan masalah)
+  4.2 Saran         (1 paragraf: animasi, nilai dari Inspector, suara, tombol panel)
+
+DAFTAR PUSTAKA      (dokumentasi resmi engine + sumber lain; 2–5 entri, gaya APA)
+```
+
+Aturan wajib pada versi ini: **setiap gambar bernomor + berjudul**, **tidak ada
+paragraf isi satu kalimat**, **kode program ditulis utuh**, **kesimpulan per bagian**.

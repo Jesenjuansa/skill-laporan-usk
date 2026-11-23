@@ -69,6 +69,10 @@ sebelum mengerjakan tugas dokumentasi apa pun** untuk dia.
   (pola nama, isi `<NPM>`/`<NAMA>` sesuai milik user).
 - Dokumen TA / Proyek Akhir: pakai nama deskriptif yang sudah dipakai user + penanda
   versi baru (mis. `<nama berkas> (revisi <tanggal>).docx`). Jangan menimpa berkas lama.
+- Berkas per bab: `BAB <romawi> <nama laporan> (revisi).docx`, disimpan di folder tugas
+  yang sama dengan laporan induknya (mis. `D:\MAGANG` untuk laporan kerja praktik).
+  Kalau user belum punya folder tugas untuk jenis laporan itu, pakai folder tempat
+  berkas sumbernya berada, bukan Downloads.
 
 ### Data identitas — tidak disimpan di repo ini
 
@@ -145,7 +149,15 @@ kasus/magang → jawabannya **"cukup dicatat di skill saja, belum perlu template
 
 ---
 
-### (B) Yang SUDAH DIKONFIRMASI user
+#| # | Hal | Catatan / pertanyaan yang harus diajukan |
+|---|---|---|
+| 9 | **Identitas pejabat & dosen** (Dekan FMIPA, Kepala/Ketua Departemen, Koordinator Prodi, dosen wali, Koordinator Proyek Akhir) | Dua versi muncul di berkas user: (a) Prof. Dr. Taufik Fuadi Abidin, S.Si., M.Tech (Dekan) + Dr. Nizamuddin, S.Si., M.Si (Departemen); (b) Prof. Dr. rer. nat. Ilham Maulana, S.Si (Dekan). **Jangan dipilih sendiri** — tanyakan mana yang berlaku saat itu |
+| 10 | **NIP Pembimbing I (<Nama Pembimbing I>)** | Berkas `PROPOSAL PROYEK AKHIR JESEN JUANSA.pdf` memuat `NIP. <NIP Pembimbing I>`. Tetap tanya dulu sebelum dipakai (user pernah minta dikosongkan) |
+| 11 | **NIP Pembimbing II (<Nama Pembimbing II>)** | Proposal memuat `NIP. <NIP Pembimbing II>`. Tanyakan dulu |
+| 12 | **Judul Proyek Akhir yang berlaku** | Muncul dua versi di berkas user: "Rancang Bangun Sistem Informasi Penjualan Kopi Gayo Berbasis Website dengan Framework Laravel pada MD Coffee Gayo" (pengesahan) vs "…Berbasis Framework Laravel…" (sampul). Tanyakan versi final |
+| 13 | **Daftar nama teman/keluarga di kata pengantar** | Nama pribadi orang lain — jangan disalin ke dokumen baru/user lain. Untuk dokumen user sendiri, ambil dari proposal terakhirnya dan tanyakan bila berubah |
+
+## (B) Yang SUDAH DIKONFIRMASI user
 
 | # | Hal | Keputusan | Tanggal |
 |---|---|---|---|
@@ -159,6 +171,10 @@ kasus/magang → jawabannya **"cukup dicatat di skill saja, belum perlu template
 | 8 | **Keterangan gambar antarmuka** | **Satu antarmuka = satu nomor Gambar + satu keterangan sendiri** (tidak digabung, tidak ditempel jadi satu gambar gabungan) | 19 Nov 2026 |
 | 9 | **Bab yang dikerjakan terpisah** | Bab per bab boleh jadi **berkas .docx sendiri** (mis. `bintang bab 3.docx`), tidak harus menempel ke draf I–II | 19 Nov 2026 |
 | 10 | **Halaman yang belum ada tangkapan layarnya** | Tetap diberi nomor gambar + kotak penanda, jangan dihapus dari naskah | 19 Nov 2026 |
+| 11 | **Struktur organisasi instansi tempat KP** | Pakai bagan **kantor induk** (mis. unit cabang yang membawahi kantor tempat KP); jabatan pimpinan di tempat KP dijelaskan di teks, tidak dibuatkan bagan terpisah kecuali user minta | 23 Nov 2026 |
+| 12 | **Data kegiatan harian di Bab IV laporan KP** | Tulis **apa adanya** dari kartu kendali, termasuk hari `Sakit`; tanggal mulai mengikuti kartu kendali (bukan Bab III) dan selisihnya sebutkan ke user | 23 Nov 2026 |
+| 13 | **Cakupan revisi laporan KP** | Cukup **satu berkas bab** (mis. `BAB IV … .docx`) berisi tabel rincian kegiatan + rekapitulasi + kendala; tidak perlu menulis ulang seluruh laporan | 23 Nov 2026 |
+| 14 | **Membaca laporan teman** | Ambil **struktur/urutan subbab & format** saja; isi, judul, dan data tetap milik user sendiri. Satukan dengan data objektif instansi (mis. tabel rekap yang dihitung ulang), bukan dengan narasi laporan teman | 23 Nov 2026 |
 
 ---
 
