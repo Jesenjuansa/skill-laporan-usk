@@ -78,7 +78,9 @@ Cylinder, lalu beri nama Player"), setiap langkah diikuti satu gambar
 | Judul bab | 14 pt tebal, rata tengah, `BAB I` lalu `PENDAHULUAN` di baris berikut | sesuai |
 | Subjudul | 12 pt tebal, nomor `1.1` (Laporan VI menulis `1.1  Latar Belakang` dengan dua spasi) | sesuai (pakai satu spasi) |
 | Subsubjudul | `3.2.1` tebal | sesuai |
-| Margin | Laporan VI: kiri/atas/kanan/bawah **3,00 cm** semua. Laporan IV & proposal: kiri 3,50, kanan **2,50** | `[KOREKSI]` panduan FMIPA: kiri 3,50 cm, atas/kanan/bawah 3,00 cm → **kanan harus 3,00**, bukan 2,50 |
+| Margin | Laporan VI: kiri/atas/kanan/bawah **3,00 cm** semua. Laporan IV & proposal: kiri 3,50, kanan **2,50** | `[KOREKSI]` panduan FMIPA 5.3.1: kiri 3,50 cm, atas/kanan/bawah 3,00 cm → **kanan harus 3,00**, bukan 2,50 |
+| Keterangan gambar | Laporan VI: `Gambar 3.1  Judul` (nomor **tanpa titik**, **dua spasi**, tanpa titik akhir) | `[USER]` pakai gaya ini untuk laporan praktikum; konsisten di seluruh naskah |
+| Istilah asing | Laporan praktikum: ditulis apa adanya tanpa miring (GameObject, Rigidbody, Canvas) | `[USER]` beda dengan dokumen TA/Proyek Akhir yang **memiringkan** istilah asing — jangan disamakan |
 | Nomor halaman | ada di footer | `[KOREKSI]` pastikan: halaman depan angka Romawi kecil (ii, iii), isi mulai 1, dan sampul tidak bernomor |
 | Judul bab mulai halaman baru | ya | sesuai |
 

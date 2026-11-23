@@ -47,8 +47,18 @@ Laporan VI milik user punya 16 keterangan dari 17 gambar. Jadi **sebelum menyera
 - Kesimpulan per bagian dan menjawab rumusan masalah; saran teknis & spesifik.
 - Daftar pustaka ada, alfabetis, dan semua sumber yang disebut tercantum.
 - Margin kiri 3,50 cm; atas/kanan/bawah 3,00 cm (**kanan 3,00, bukan 2,50**).
+- **Setiap nomor pakai numbering otomatis Word**, bukan angka yang diketik manual
+  (subbab `1.1`, butir `1.`/`2.`, langkah `a.`/`b.`). Satu jenis daftar = satu numId,
+  indentasi seragam (left 720, hanging 360). Rincian & jebakan "file corrupted":
+  `references/format-penulisan.md` bagian Penomoran otomatis Word.
 - Jalankan skrip `CEK-CEPAT` di `references/format-penulisan.md`; target:
   gambar tanpa keterangan = 0, paragraf isi 1 kalimat = 0.
+
+**Logo/ikon di sampul bukan "gambar tanpa keterangan".** Pemeriksa otomatis ikut
+menghitung setiap `w:drawing`, termasuk logo USK di sampul — jangan beri keterangan
+`Gambar` pada logo, dan jangan panik kalau angkanya 1. Cek dulu letaknya (blok sebelum
+`PROGRAM STUDI`) sebelum menyimpulkan ada gambar langkah yang menggantung; kesimpulan
+itu baru sah untuk gambar di Bab Isi.
 
 ## Aturan inti (ringkas — rincian di references/)
 
@@ -79,7 +89,10 @@ kiri. Persamaan bernomor `(2.3)` rata kanan + keterangan simbol di bawahnya.
    Kalau tugasnya **laporan mata kuliah/praktikum** (Pemrograman Game dsb.), pakai `references/profil-laporan-praktikum.md` — itu gaya nyata milik user, bukan format panduan TA.
 4. Bangun dokumen dari `templates/` (JANGAN mengubah berkas draft milik user; hasil
    harus berkas baru) → generator: `templates/buat_laporan_usk.py`, kerangka teks:
-   `templates/kerangka-dokumen.md`.
+   `templates/kerangka-dokumen.md`. Untuk **bab hasil laporan magang/KP** (rincian
+   kegiatan harian + rekapitulasi + kendala + pembahasan) pakai
+   `templates/gen_bab_hasil_kegiatan.py` — rekap hari dihitung dari data kartu kendali,
+   bukan diketik.
 5. Tulis isi mengikuti `references/format-penulisan.md`; sitasi hanya dari folder
    referensi jurnal user dan harus bisa ditelusuri
    (`references/sitasi-daftar-pustaka.md`).
@@ -90,6 +103,26 @@ kiri. Persamaan bernomor `(2.3)` rata kanan + keterangan simbol di bawahnya.
    sama dengan gambarnya (lihat pitfall *keep with next*).
 7. Laporkan hasil: path berkas lengkap + apa yang perlu user isi sendiri
    (NIP, tanggal, nama penguji).
+
+### Kalau diminta memperbaiki laporan yang sudah ada sampai lolos standar
+
+Jangan menulis ulang dari nol dan jangan hanya menambal teks. Urutannya:
+
+1. **Cadangkan dulu**: `cp "LAPORAN X.docx" "LAPORAN X (sebelum perbaikan).docx"`,
+   lalu beri tahu user nama berkas cadangannya.
+2. **Ukur** dengan skrip `CEK-CEPAT` (`references/format-penulisan.md`) dan catat angka
+   awalnya — angka ini yang dipakai untuk membuktikan perbaikan di akhir.
+3. **Klasifikasikan** setiap temuan: sah vs cacat (tabel di bagian yang sama).
+4. Perbaiki yang cacat saja, dengan urutan dampak terbesar: kesimpulan per bagian →
+   latar belakang yang menyebut kondisi nyata → pengantar subbab yang masih 1 kalimat →
+   keterangan gambar yang hilang → kalimat yang masih menyerupai sumbernya.
+5. **Uji ulang** setelah setiap kelompok perubahan (jangan sekali di akhir saja):
+   bangun ulang → ukur → kalau ada yang tidak berubah, cari dulu **teks aslinya** di
+   dokumen. Daftar penggantian berbasis teks persis (exact match) gagal tanpa pesan
+   kalau kalimat di dokumen sudah berbeda — cari dengan potongan pendek dan pastikan
+   hasilnya benar-benar berganti.
+6. Buka di Word (`Fields.Update()` + `Repaginate`) lalu ekspor PDF sebagai bukti;
+   laporkan angka sebelum → sesudah dan sisa yang masih perlu dikerjakan user.
 
 ### Kalau diminta melanjutkan bab dari laporan orang lain (mis. "lanjutin bab 3
 ### seperti file X")
@@ -119,6 +152,7 @@ kiri. Persamaan bernomor `(2.3)` rata kanan + keterangan simbol di bawahnya.
 | `templates/gen_bab3_laporan.py` | Contoh lengkap satu bab (BAB III): Tabel/Gambar bernomor, gambar tertanam + keterangan yang dipaksa satu halaman, kotak penanda, tabel header berulang |
 | `templates/gen_bagan_dan_keterangan.py` | Dokumen Word berdiri sendiri: bagan + `Gambar X.Y`/Sumber + daftar `Keterangan:` jabatan (1..n, a/b/c, 1/2/3) |
 | `scripts/buat_bagan_organisasi.py` | Gambar ulang bagan struktur organisasi bersih (PNG 400 dpi + SVG) dari data `SEKSI`, kanvas = lebar area teks Word |
+| `templates/gen_bab_hasil_kegiatan.py` | Generator bab hasil (BAB IV) laporan magang/KP: tabel rincian kegiatan harian (header berulang), rekapitulasi jenis kegiatan yang dihitung dari data, kendala & solusi, pembahasan yang merujuk bagan di bab profil |
 | `scripts/cek_tata_letak_pdf.py` | Cek PDF hasil ekspor: label Gambar yatim, blok lewat margin, nomor halaman |
 
 ## Pitfall yang sudah pernah terjadi
@@ -174,6 +208,18 @@ kiri. Persamaan bernomor `(2.3)` rata kanan + keterangan simbol di bawahnya.
   tanggal mulai di Bab III dengan baris pertama kartu kendali, dan laporkan selisihnya
   sebagai hal yang perlu dikonfirmasi, bukan diasumsikan salah satu yang benar.
 
+- **Subbab milik bab lain jangan ditulis sebagai bagian bab yang sedang dikerjakan.**
+  Bagan/struktur organisasi tempat KP/penelitian = subbab **di bab profil instansi
+  (BAB II)**, sedangkan bab hasil (BAB IV) hanya memuat rincian kegiatan, rekapitulasi,
+  kendala, dan pembahasan. Menaruh bagan di BAB IV memaksa nomor turunan bab itu
+  bergeser (4.1 → 4.2 dst.) dan rujukan silang di pembahasan salah. Begitu user
+  memindahkan satu blok antar bab, kerjakan sekaligus: (1) nomor subbab, (2) nomor
+  ilustrasi (`Gambar 4.1` → `Gambar 2.1`), (3) **setiap rujukan di teks bab lain**
+  (cari `Gambar <n>.` di seluruh naskah), (4) hentikan penomoran ulang di subbab itu
+  dan rapikan blok berikutnya satu angka. Subbab lain di bab tujuan (mis. 2.1, 2.2)
+  yang tidak ikut dipindah **jangan dibuat kosong** — beri tahu user bahwa bagian itu
+  tinggal disisipkan saat digabung ke laporan induk.
+
 - **Keterangan gambar terpisah dari gambarnya saat pindah halaman.** Paragraf gambar
   dan paragraf keterangan harus berbagi halaman: set `keep_with_next = True` pada
   paragraf berisi gambar **dan** `keep_together = True` pada gambarnya (python-docx:
@@ -201,6 +247,14 @@ kiri. Persamaan bernomor `(2.3)` rata kanan + keterangan simbol di bawahnya.
 - **Nomor halaman: naskah per bab (berdiri sendiri) mulai dari 1**; kalau nanti
   digabung ke dokumen penuh, biarkan Word yang melanjutkan — jangan set `w:start`
   pada section bab berikutnya.
+- **`write_file` (bash heredoc) dengan teks panjang berisi kurung/kuotasi gagal dengan
+  `unexpected EOF while looking for matching`.** Jangan menulis isi referensi lewat
+  heredoc; tulis skrip Python kecil dengan `write_file`, jalankan dengan
+  `C:/Python314/python.exe`, dan biarkan skrip itu yang menambahkan/menambal berkas
+  (termasuk pengecekan "sudah ada atau belum" supaya tidak dobel).
+- **Jangan mengubah lampiran gambar yang ternyata sudah benar.** Pemeriksa otomatis
+  menghitung logo sampul sebagai gambar tanpa keterangan; cek blok sekitarnya dulu
+  sebelum menyimpulkan ada gambar yang menggantung (lihat Standar mutlak di atas).
 - Berkas .docx/.pptx yang sedang terbuka di Word/PowerPoint **terkunci** →
   `PermissionError` / `mv: Device or resource busy`. Simpan ke nama baru dulu, rapikan
   setelah Office ditutup (cek `~$*.docx`, proses WINWORD/POWERPNT).
@@ -222,6 +276,15 @@ kiri. Persamaan bernomor `(2.3)` rata kanan + keterangan simbol di bawahnya.
   `$w.Quit()` di akhir. Ekspor yang benar selalu mengembalikan `ComputeStatistics(2)`
   (jumlah halaman) — kalau baris itu kosong, PDF belum dibuat.
 - Skrip Office dijalankan dengan `C:/Python314/python.exe` (venv hermes tanpa pip).
+
+- **Jangan menyunting skrip generator hasil dengan find-replace berantai.** Generator
+  bab adalah satu blok `main()` yang panjang; memindahkan/mengganti blok lewat
+  `str.replace` berulang kali membuat penanda bagian bertumpuk, blok terduplikasi, atau
+  terhapus, dan skripnya baru ketahuan rusak setelah dijalankan (nomor subbab kembali
+  salah, caption hilang). Setelah setiap penyuntingan struktural, periksa keberadaan
+  dan urutan penanda `subjudul(doc, "2.3"` / `"4.1"` / `"4.2"` dan keberadaan nomor
+  ilustrasi lama (`Gambar 4.1`) sebelum menulis ulang dokumen; kalau sudah campur,
+  tulis ulang `main()` dari nol dengan urutan bab yang benar, jangan menambal.
 
 ## Cara memperbarui skill
 

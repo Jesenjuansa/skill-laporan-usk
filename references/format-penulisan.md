@@ -104,7 +104,7 @@ Catatan: setiap kutipan harus jelas sumbernya sehingga pembaca mudah menelusuri.
 ### 5.3.8 Ilustrasi (ringkasan)
 
 Ilustrasi = tabel, grafik, diagram alir, foto, atau gambar. Detail lengkap di
-`format-penulisan.md`.
+BAGIAN 2 berkas ini (tabel, gambar, persamaan).
 
 ### Setelan Word yang memenuhi aturan ini
 
@@ -137,12 +137,16 @@ menyajikan informasi lebih efektif dan mengurangi kalimat panjang.
 
 ### Penomoran (berlaku sama untuk tabel & gambar)
 
-- Angka **Arab**, dimulai dengan **nomor bab** + **titik**, lalu **nomor urut** + **titik** → contoh: `Tabel 2.1.`, `Gambar 3.2.`
-  `[PANDUAN]` Catatan PUEBI di bagian 3 file ini: angka penomoran deret ilustrasi
-  ditulis **tanpa titik di belakang** (`Gambar 2.1`), dan subjudul pun `[USER]` tanpa
-  titik. Kalau menemukan captions sumber (LKP/skripsi lain) berbentuk `Gambar 2.1`
-  tanpa titik, itu konsisten dengan PUEBI — jangan "membetulkan" jadi bertitik; ikuti
-  bentuk yang dipakai naskah user sendiri, dan tanyakan bila belum ada contohnya.
+- **Aturan panduan `[PANDUAN]`**: angka Arab, diawali **nomor bab** + **titik**, lalu
+  **nomor urut** + **titik** → `Tabel 2.1.`, `Gambar 3.2.`
+- **Kebiasaan nyata user `[USER]`**: pada laporan praktikum menulis **tanpa titik**
+  (`Gambar 3.1  Judul`, dua spasi). Ini juga sejalan dengan PUEBI (angka penomoran
+  deret ilustrasi tidak diikuti titik).
+- **Keputusan pembagian**: dokumen **TA/Proyek Akhir/Tesis** → ikuti panduan (bertitik);
+  **laporan praktikum** → ikuti kebiasaan user (tanpa titik). Ada konflik nyata pada
+  berkas user sendiri, jadi **sebutkan perbedaannya ke user**, jangan memilih diam-diam.
+- Jangan "membetulkan" captions sumber (LKP/skripsi lain) ke gaya berbeda dari naskah
+  yang sedang dikerjakan; ikuti naskah user dan tanyakan bila belum ada contohnya.
 - Tabel/gambar pertama di Bab II = `Tabel 2.1.` / `Gambar 2.1.`
 - Nomor di Daftar Tabel/Daftar Gambar harus sama dengan yang di teks.
 
@@ -383,4 +387,74 @@ print('kode program (using/public class):', sum(1 for p in ps if p.startswith(('
 ```
 
 Target lulus: **gambar tanpa keterangan = 0**, **paragraf 1 kalimat = 0**,
-margin 3,50/3,00/2,50/3,00 cm (atau sesuai permintaan user), daftar pustaka ada.
+margin 3,50/3,00/3,00/3,00 cm (panduan; 2,50 cm di berkas lama adalah penyimpangan),
+daftar pustaka ada.
+
+### Membaca hasil skrip: bedakan yang sah dari yang cacat
+
+Skrip ini sengaja menghitung **semua** baris pendek, jadi jumlahnya selalu lebih besar
+dari cacat sebenarnya. Sebelum menyimpulkan laporan cacat, klasifikasikan tiap temuan:
+
+| Temuan | Status | Tindakan |
+|---|---|---|
+| Butir rumusan masalah / tujuan / manfaat | sah | biarkan 1 kalimat |
+| Langkah bernomor di Bab III | sah | biarkan 1 kalimat |
+| Kalimat pengantar sebelum daftar ("Berikut ini adalah langkah-langkahnya.") | sah | biarkan, tapi usahakan didahului 1–2 kalimat konteks dalam paragraf yang sama |
+| Keterangan gambar/tabel | sah | biarkan |
+| Paragraf pembuka/isi/penutup kata pengantar | sah | biarkan |
+| Paragraf isi BAB I latar belakang, BAB II teori, BAB III penjelasan, BAB IV kesimpulan/saran | **cacat** | gabung/pecah jadi 2–3 kalimat |
+| Gambar tanpa keterangan **di Bab Isi** | **cacat** | beri `Gambar <bab>.<nomor>  <judul>` |
+| Logo/ikon di sampul terhitung "tanpa keterangan" | sah | jangan diberi keterangan |
+
+Laporkan ke user angka "sah" dan "perlu diperbaiki" secara terpisah, jangan hanya
+angka mentah — angka mentah membuat laporan yang sudah benar terlihat rusak, dan
+membuat laporan yang benar-benar cacat terlihat wajar.
+
+## Penomoran otomatis Word (numbering) — WAJIB konsisten
+
+Aturan user (23 Nov 2026): **setiap nomor pakai numbering otomatis Word, bukan angka
+yang diketik manual**, dan harus konsisten. Alasannya: kalau ada butir yang
+ditambah/dihapus, nomor ikut menyesuaikan sendiri dan tidak ada nomor "lompat".
+
+### Yang harus memakai numbering otomatis
+
+| Isi | Bentuk nomor | numId di template LAPORAN 3 |
+|---|---|---|
+| Judul subbab bab 1 | `1.1`, `1.2` … | 7 |
+| Judul subbab bab 2 | `2.1`, `2.2` … | 12 |
+| Judul subbab bab 4 | `4.1`, `4.2` … | 21 |
+| Judul subbab bab 3 | `3.1`, `3.2` … | 25 |
+| Langkah kerja bab 3 | `a.`, `b.`, `c.` … | 26 / 27 / 34 |
+| Butir rumusan masalah | `1.`, `2.`, `3.` … | 31 |
+| Butir tujuan | `1.`, `2.` … | 32 |
+| Butir manfaat | `1.`, `2.` … | 33 |
+
+Silang bab (1.1 → 1.2) **otomatis karena lvlText di numbering memakai `%1` per bab**
+(mis. `1.%1`, `2.%1`), bukan karena angka diketik. Jangan pernah mengetik
+`1.1  Latar Belakang` sebagai teks biasa.
+
+### Kesalahan yang sudah terjadi (dan gejalanya)
+
+| Gejala | Penyebab | Perbaikan |
+|---|---|---|
+| Bentuk daftar tidak seragam (ada `3.3` menjorok lebih dalam) | numId 34 memakai `ind left=1429` sedangkan 26/27 `left=720` | samakan `w:ind left=720 hanging=360` pada abstractNum terkait |
+| Nomor tampak "…” tidak sesuai | tiap subbab dibuat numId baru | pakai satu numId per jenis daftar |
+| Word bilang **"file appears to be corrupted"** setelah numbering diubah | `numbering.xml` di-parse lalu ditulis ulang dengan `ElementTree` → deklarasi namespace hilang/berubah (`xmlns:ns1=…markup-compatibility` menggantikan `xmlns:w=…`) | **jangan** parse/serialize ulang numbering.xml. Ubah hanya atribut lewat `str.replace` pada blok `<w:abstractNum …>` yang dituju, lalu tulis ulang zip |
+| Perbaikan teks hilang setelah pulih dari cadangan | menyalin cadangan lama menimpa versi baru | terapkan dulu perbaikan numbering, **baru** perbaikan teks, lalu verifikasi kata/paragraf |
+
+### Cara memeriksa nomor yang BENAR-BENAR tampil
+
+Jangan hanya melihat XML. Buka di Word lewat COM lalu baca `Range.ListFormat.ListString`:
+
+```powershell
+$w = New-Object -ComObject Word.Application; $w.Visible=$false; $w.DisplayAlerts=0
+$doc = $w.Documents.Open("D:\lab game\LAPORAN X.docx", $false, $true)
+foreach ($p in $doc.Paragraphs) {
+    $lst = $p.Range.ListFormat.ListString
+    if ($lst -ne "") { "{0} | {1}" -f $lst, ($p.Range.Text -replace "[\r\n\a]","") }
+}
+$doc.Close($false); $w.Quit()
+```
+
+Hasil yang benar untuk LAPORAN 4 (23 Nov 2026): `1.1, 1.2, 1.3, 1.4, 2.1–2.5,
+3.1–3.3, 4.1, 4.2` dan langkah `a. b. c. … g.` — semua dari Word, bukan teks.
